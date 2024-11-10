@@ -9,6 +9,7 @@
 - nest new post-api
 - npm i --save @nestjs/typeorm typeorm oracledb
 - npm install --save @nestjs/swagger
+- npm i --save @nestjs/config
 
 
 ### Crear modulo de Autentication

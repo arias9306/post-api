@@ -1,21 +1,16 @@
-import { DataSource } from 'typeorm';
+import { ConfigService } from '@nestjs/config';
+import { TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { EnvironmentVariables } from './enviroment-variables';
 
-export const databaseProviders = [
-  {
-    provide: 'DATA_SOURCE',
-    useFactory: async () => {
-      const dataSource = new DataSource({
-        type: 'oracle',
-        host: 'localhost',
-        port: 3306,
-        username: 'root',
-        password: '123456',
-        database: 'post',
-        entities: [__dirname + '/../**/*.entity{.ts,.js}'],
-        synchronize: true, // Solo en Development..
-      });
-
-      return dataSource.initialize();
-    },
-  },
-];
+export const typeOrmConfig = (
+  configService: ConfigService<EnvironmentVariables>,
+): TypeOrmModuleOptions => ({
+  type: 'postgres', // Usar Oracle aca..
+  host: configService.get('DB_HOST'),
+  port: configService.get('DB_PORT'),
+  username: configService.get('DB_USERNAME'),
+  password: configService.get('DB_PASSWORD'),
+  database: configService.get('DB_NAME'),
+  logging: true,
+  synchronize: true,
+});
