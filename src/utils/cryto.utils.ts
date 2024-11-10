@@ -7,4 +7,8 @@ export class CrytoUtils {
   ): Promise<boolean> {
     return bcryptjs.compare(password, encryptedPassword);
   }
+
+  static async hashPassword(password: string, salt: string): Promise<string> {
+    return bcryptjs.hash(password, salt);
+  }
 }

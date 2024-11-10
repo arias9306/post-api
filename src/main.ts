@@ -12,9 +12,9 @@ async function bootstrap() {
   // TODO: disable cors in prod
   app.enableCors();
 
-  initSwaggerDocs(app);
-
   app.setGlobalPrefix(globalPrefix);
+
+  initSwaggerDocs(app);
 
   const port = process.env.PORT ?? 3000;
 
