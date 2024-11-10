@@ -1,5 +1,6 @@
 import { ConfigService } from '@nestjs/config';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
+import { User } from 'src/entities/user.entity';
 import { EnvironmentVariables } from './enviroment-variables';
 
 export const typeOrmConfig = (
@@ -12,5 +13,6 @@ export const typeOrmConfig = (
   password: configService.get('DB_PASSWORD'),
   database: configService.get('DB_NAME'),
   logging: true,
-  synchronize: false,
+  synchronize: true, // Solo en dev
+  entities: [User],
 });

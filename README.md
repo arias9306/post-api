@@ -10,6 +10,8 @@
 - npm i --save @nestjs/typeorm typeorm oracledb
 - npm install --save @nestjs/swagger
 - npm i --save @nestjs/config
+- npm install --save @nestjs/jwt
+- npm i --save bcryptjs
 
 
 ### Crear modulo de Autentication
