@@ -2,10 +2,10 @@ import { Injectable, Logger, UnauthorizedException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { InjectRepository } from '@nestjs/typeorm';
-import * as bcryptjs from 'bcryptjs';
 import { EnvironmentVariables } from 'src/config/enviroment-variables';
 import { User } from 'src/entities/user.entity';
 import { AuthCredentialsDto } from 'src/models/auth-credentials.dto';
+import { CrytoUtils } from 'src/utils/cryto.utils';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -66,7 +66,10 @@ export class AuthService {
     try {
       const user = await this.userRepository.findOne({ where: { username } });
 
-      if (user && (await bcryptjs.compare(password, user.password))) {
+      if (
+        user &&
+        (await CrytoUtils.validatePassword(password, user.password))
+      ) {
         return user;
       }
     } catch (error) {
