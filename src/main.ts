@@ -1,4 +1,4 @@
-import { Logger } from '@nestjs/common';
+import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { initSwaggerDocs } from './app.swagger';
@@ -13,6 +13,8 @@ async function bootstrap() {
   app.enableCors();
 
   app.setGlobalPrefix(globalPrefix);
+
+  app.useGlobalPipes(new ValidationPipe());
 
   initSwaggerDocs(app);
 

@@ -5,6 +5,7 @@ export const initSwaggerDocs = (app: INestApplication): void => {
   const swaggerConfig = new DocumentBuilder()
     .setTitle('Post API')
     .setDescription('Post Api with Authorization')
+    .addBearerAuth()
     .build();
 
   // TODO: Add Authentication

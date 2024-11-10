@@ -12,7 +12,9 @@
 - npm i --save @nestjs/config
 - npm install --save @nestjs/jwt
 - npm i --save bcryptjs
-
+- npm install --save @nestjs/passport passport passport-jwt
+- npm i --save class-validator
+- npm i --save class-transformer
 
 ### Crear modulo de Autentication
 
