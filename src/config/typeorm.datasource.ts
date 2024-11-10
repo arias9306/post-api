@@ -12,5 +12,5 @@ export const typeOrmConfig = (
   password: configService.get('DB_PASSWORD'),
   database: configService.get('DB_NAME'),
   logging: true,
-  synchronize: true,
+  synchronize: false,
 });
